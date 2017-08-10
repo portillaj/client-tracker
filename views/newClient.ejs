@@ -1,0 +1,60 @@
+<% include partials/header.ejs %>
+
+<!--Client data entry section -->
+  
+<div class="container-fluid form-background">
+  <div class="container data">
+    
+    <div class="container data-input-section">
+        <h1 class="text-center add-client-header">Enter Client Data</h1>
+        <div class="row">
+         <div class="col-md-12 col-lg-12 col-sm-12">
+       <div class="insert-client">
+           <form action="/clients" method="POST" class="client-form form-inline">
+              <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[fname]" placeholder="First Name">
+              </div>
+              <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[lname]" placeholder="Last Name">
+              </div>
+              <br><br>
+               <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[total_fee]" placeholder="Total Fee">
+              </div>
+               <div class="form-group right-side">
+                <input type="text" class="form-control" data="" name="client[date_paid]" placeholder="Date Paid">
+              </div>
+              <br><br>
+                <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[down_payment]" placeholder="Down Payment">
+              </div>
+                
+               <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[case_number]" placeholder="Case Number">
+              </div>
+              <br><br>
+               <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[phone_number]" placeholder="Phone Number">
+              </div>
+              
+               <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[pay_plan]" placeholder="Pay Plan">
+              </div>
+              <br><br>
+                <div class="form-group last-input left-side">
+                 <input type="text" class="form-control pay-plan-input" name="client[pay_freq]" placeholder="Pay Plan (eg. weekly, monthly, etc.)">
+               
+              </div>
+               <div class="submit-button">
+                <input type="submit" class="btn btn-default client-submit"/>
+              </div>
+            </form>
+        </div>
+        </div>
+        </div><!--END ROW -->
+    </div> 
+    </div>
+</div><!--END CLIENT DATA ENTRY SECTION -->
+
+
+<% include partials/footer.ejs %>

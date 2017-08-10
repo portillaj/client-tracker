@@ -1,0 +1,294 @@
+html {
+    box-sizing: border-box;
+   
+}
+
+body {
+     font-family: 'Lato', sans-serif;
+}
+
+/**********************************************
+MONEY SECTION
+**********************************************/
+.app-links {
+  background-color: rgba(0, 0, 0, 0.0);
+  border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    font-size: 17px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: tomato;
+    transition-duration: 0.3s;
+}
+
+.navbar-default .navbar-brand {
+    font-size: 35px;
+    color: white;
+}
+
+.navbar-default .navbar-brand:active {
+    color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: tomato;
+    transition-duration: 0.3s;
+}
+
+
+/**********************************************
+MONEY SECTION
+**********************************************/
+.background-section {
+    background-image: url('../images/building.jpg');
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    margin-top: -75px;
+}
+
+#date-display {
+    color: #F7CE3E;
+    font-size: 30px;
+    margin-top: 9%;
+    text-align: center;
+    border: 3px solid white;
+    display: inline-block;
+    background-color: #3D3D3D;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.date-money-section {
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.weekly-income, .amount-owed {
+    display: inline-block;
+    min-width: 20%;
+    background-color: #1E9D96;
+    min-height: 40px;
+    margin-top: 30px;
+}
+
+.amount-owed {
+    background-color: #E04C3F;
+}
+
+.income-title, .amount-title {
+    margin-top: 10px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+
+.amount-tracker, .income-tracker {
+    margin-left: 25px;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+/**********************************************
+ADD NEW CLIENT BUTTON SECTION
+**********************************************/
+.add-client-section {
+    text-align: center;
+    height: 100px;
+}
+
+.pay-plan-input {
+    margin-right: 5%;
+}
+
+.submit-button {
+    display: inline-block;
+    margin-right: 20%;
+}
+.client-add {
+    margin-top: 25px;
+    background-color: white;
+    border: 3px solid black;
+    color: #F7CE3E;
+}
+
+.client-add:hover {
+    background-color: #5A5A5A;
+    transition-duration: 0.6;
+    border: none;
+    color: #F7CE3E;
+}
+
+/**********************************************
+CLIENT LIST SECTION
+**********************************************/
+#delete-client {
+    
+}
+.list-break {
+    width: 50%;
+    margin-bottom: 35px;
+    margin-top: 10px;
+}
+
+.client-list {
+    min-height: 692px;
+    background-color: #3D3D3D;
+}
+
+.client-list-header {
+    font-size: 30px;
+    margin-top: 10%;
+    color: white;
+}
+
+
+.name-container {
+    display: inline-block;
+    color: white;
+}
+
+.view-client-button {
+    background-color: #444444;
+       float: right;
+       margin-right: 15px;
+}
+
+.delete-form {
+    display: inline;
+    float: right;
+}
+
+
+
+.first-break {
+    margin-top: 20px;
+}
+
+
+
+/**********************************************
+CLIENT DETAILS SECTION
+**********************************************/
+.client-detail-header {
+    font-size: 30px;
+    margin-top: 5%;
+    color: white;
+}
+
+.client-details {
+    background-color: #1C2D36;
+}
+
+.empty-client {
+    color: #BBD184;
+    margin-top: 25%;
+}
+
+#display-data {
+    width: 60%;
+    text-align: center;
+    border-radius: 5px;
+    min-height: 450px;
+}
+
+.left-details h5, .right-details h5 {
+    font-size: 12px;
+    color: #e25d33;
+}
+
+.right-details h3, .left-details h3 {
+    margin-bottom: -15px;
+     color: white;
+     font-weight: thin;
+}
+
+.client-details {
+    min-height: 400px;
+}
+
+.left-details, .right-details {
+    display: inline-block;
+    text-align: left;
+}
+
+.right-details {
+    margin-left: 25%;
+}
+
+.view-data {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #2B5379;   
+    width: 110%;
+}
+
+.edit-buttons {
+    margin-top: 35px;
+    text-align: center;
+    
+}
+
+.edit-buttons a {
+    margin-left: 9%;
+    margin-bottom: 40px;
+}
+
+.edit-buttons a:last-child {
+    margin-right: 8%;
+}
+
+.breakpoint {
+    width: 75%;
+}
+
+.edit-client-button {
+    margin-bottom: 25px;
+}
+/**********************************************
+CLIENT FORM SECTION
+**********************************************/
+.form-background {
+    background-image: url('../images/form-background.png');
+    height: 100vh;
+    background-size: cover;
+    margin-top: -75px;
+}
+
+.add-client-header {
+    color: #52ACBC;
+}
+
+.data-input-section {
+    margin-top: 15%;
+    width: 60%;
+    border-radius: 5px;
+    min-height: 400px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.left-side {
+    margin-right: 60px;
+}
+
+.insert-client {
+    margin: 0 auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#options {
+    width: 26%;
+}
+
+.client-submit {
+    margin-left: 15.5%;
+    background-color: #591465;
+    color: white;
+    border: 1px solid white;
+}

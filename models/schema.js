@@ -1,0 +1,63 @@
+var mongoose = require("mongoose");
+
+//APP CONFIG
+mongoose.connect("mongodb://localhost/client_tracker", {
+  useMongoClient: true});
+  
+  //MONGOOSE/MODEL CONFIG
+var clientSchema = new mongoose.Schema({
+   fname: { 
+        type: String,
+        required: true
+   },
+   lname: {
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
+   },
+    total_fee: {
+        type: Number,
+        trim: true,
+        default: 0
+    },
+    date_paid: {
+        type: String,
+        trim: true,
+        default: 'Paid In Full'
+    },
+    down_payment: {
+        type: Number,
+        trim: true,
+        default: 0
+    },
+    case_number: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    phone_number: {
+        type: String,
+        trim: true
+    },
+    pay_plan: {
+        type: Number,
+        trim: true,
+        default: 0
+    },
+    pay_freq: {
+        type: String,
+        default: "Paid In Full"
+    },
+    balance: {
+        type: Number,
+        trim: true
+    },
+    created: { 
+        type: Date, default: Date.now 
+    }
+});
+
+var Client = mongoose.model("Client", clientSchema);
+
+module.exports = Client;

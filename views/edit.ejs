@@ -1,0 +1,61 @@
+<% include partials/header.ejs %>
+
+<!--Client data entry section -->
+  
+<div class="container-fluid form-background">
+  <div class="container data">
+    
+    <div class="container data-input-section">
+        <h1 class="text-center add-client-header">EDIT CLIENT DATA</h1>
+        <div class="row">
+         <div class="col-md-12 col-lg-12 col-sm-12">
+       <div class="insert-client">
+           
+           <form action="/clients/<%= client._id %>?_method=PUT" method="POST" class="client-form form-inline">
+              <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[fname]" value="<%= client.fname %>">
+              </div>
+              <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[lname]" value="<%= client.lname %>">
+              </div>
+              <br><br>
+               <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[total_fee]" value="<%= client.total_fee %>">
+              </div>
+               <div class="form-group right-side">
+                <input type="text" class="form-control" data="" name="client[date_paid]" value="<%= client.date_paid %>">
+              </div>
+              <br><br>
+                <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[down_payment]" value="<%= client.down_payment %>">
+              </div>
+                
+               <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[case_number]" value="<%= client.case_number %>">
+              </div>
+              <br><br>
+               <div class="form-group left-side">
+                <input type="text" class="form-control" name="client[phone_number]" value="<%= client.phone_number %>">
+              </div>
+              
+               <div class="form-group right-side">
+                <input type="text" class="form-control" name="client[pay_plan]" value="<%= client.pay_plan %>">
+              </div>
+              <br><br>
+                <div class="form-group last-input left-side">
+                 <input type="text" class="form-control pay-plan-input" name="client[pay_freq]" value="<%= client.pay_freq %>">
+               
+              </div>
+               <div class="submit-button">
+                <input type="submit" class="btn btn-default client-submit"/>
+              </div>
+            </form>
+        </div>
+        </div>
+        </div><!--END ROW -->
+    </div> 
+    </div>
+</div><!--END CLIENT DATA ENTRY SECTION -->
+
+
+<% include partials/footer.ejs %>
