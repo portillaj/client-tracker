@@ -15,3 +15,5 @@ when they are made.
 *8. Chat system will be available to users in the office to communicate
 
 *upcoming features
+
+![alt text](https://raw.githubusercontent.com/portillaj/client-tracker/master/public/images/building.jpg)
