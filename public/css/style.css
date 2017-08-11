@@ -26,7 +26,7 @@ SIGN UP SECTION PAGE
 }
 
 .app-title {
-    margin-top: 130px;
+    margin-top: 100px;
     position: absolute;
     margin-left: 22%;
     color: white;
@@ -55,7 +55,10 @@ SIGN UP SECTION PAGE
     color: #1ab188;
     transition:.5s ease;
     margin-top: 25px;
-  
+ }
+ 
+ .option-content > div:last-child {
+     display: none;
  }
  
  .option a {
@@ -108,13 +111,27 @@ li a:hover {
     margin-top: 35px;
 }
 
-.form-control {
+.signup-form {
     background: none;
     border-radius: 0;
     margin-left: 65%;
     margin-top: 25px;
     width: 80%;
 }
+
+.login-form input[type=text] {
+
+   background: none;
+   width: 70%;
+   margin: 0 auto;
+}
+
+.login-header {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: white;
+}
+
 input[type=text] {
     margin-right: 10px;
 }

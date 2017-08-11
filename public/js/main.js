@@ -73,20 +73,22 @@ $(".view-client-button").on("click", function(event){
     
 });//end view client click button
 
+//click event on signup form
 $('.option a').on('click', function (e) {
   
   e.preventDefault();
-  
+  //signup is highlighted and login section is hidden
+  //when user clicks on login, the signup section is then hidden and login section appears with fade in effect
   $(this).parent().addClass('active');
   $(this).parent().siblings().removeClass('active');
   
   var target = $(this).attr('href');
 
-//   $('.tab-content > div').not(target).hide();
+    $('.option-content > div').not(target).hide();
   
-//   $(target).fadeIn(600);
+    $(target).fadeIn(600);
   
-});
+});//end click event
 
 });//end document.ready
 
