@@ -18,7 +18,7 @@ $(".view-client-button").on("click", function(event){
       url: "/clients/" + viewClient,
       method: "GET"
     }).done(function(response) {
-        
+    
       //get the remaining balance from client
        response.balance = clientBalance(response.total_fee, response.down_payment);
       
@@ -68,7 +68,7 @@ $(".view-client-button").on("click", function(event){
         $(".edit-client-button").on("click", function(){
            window.location.href='/clients/' + response._id + '/edit'; 
         });//end edit click button function
-        
+
     }); //end promise function
     
 });//end view client click button
@@ -90,6 +90,13 @@ $('.option a').on('click', function (e) {
   
 });//end click event
 
+//deleteClient function is run when the user clicks on delete button
+$("#delete-client").on("click", deleteClient);
+
+
+//displays clients in alphabetical order by last name to easily search client
+
+
 });//end document.ready
 
 
@@ -109,3 +116,22 @@ function clientBalance(totalFee, down) {
 function payment(totalFee, clientPayment){
     return totalFee - clientPayment;
 }
+
+
+
+
+//function that deletes the client with confirmation 
+function deleteClient() {
+    var confirmation = confirm('Are you sure you want to delete client'); //confirmation prompt
+     var deleteClient = $(this).data("id"); //delete client variable that selects that client only
+     if(confirmation){ //if user hit yes, run the following code, if not return false
+        $.ajax({
+            type: 'DELETE',
+            url: '/clients/' + deleteClient,
+        }).done(function(response){
+             window.location.replace('/clients');
+        });
+    } else {
+        return false;
+    }
+}//end function

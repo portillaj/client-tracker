@@ -1,6 +1,5 @@
 html {
     box-sizing: border-box;
-   
 }
 
 body {
@@ -140,15 +139,14 @@ input[type=text] {
     margin-left: 20%;
     margin-top: 25px;
     border:0;
-  outline:none;
-  border-radius:0;
-  padding:10px 0;
-  font-size:2rem;
-  background-color: #1ab188;
-  color: white;
-  width: 60%;
-  margin-bottom: 25px;
-  font-size: 24px;
+    outline:none;
+    border-radius:0;
+    padding:10px 0;
+    background-color: #1ab188;
+    color: white;
+    width: 60%;
+    margin-bottom: 25px;
+    font-size: 24px;
 }
 
 .btn:hover {
@@ -199,6 +197,7 @@ MONEY SECTION
     background-position: center;
     background-size: cover;
     margin-top: -75px;
+    background-attachment: fixed;
 }
 
 #date-display {
@@ -276,12 +275,10 @@ ADD NEW CLIENT BUTTON SECTION
 /**********************************************
 CLIENT LIST SECTION
 **********************************************/
-#delete-client {
-    
-}
+
 .list-break {
     width: 50%;
-    margin-bottom: 35px;
+
     margin-top: 10px;
 }
 
@@ -296,7 +293,6 @@ CLIENT LIST SECTION
     color: white;
 }
 
-
 .name-container {
     display: inline-block;
     color: white;
@@ -309,16 +305,13 @@ CLIENT LIST SECTION
 }
 
 .delete-form {
-    display: inline;
+    display: inline-block;
     float: right;
 }
-
-
 
 .first-break {
     margin-top: 20px;
 }
-
 
 
 /**********************************************

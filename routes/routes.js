@@ -81,11 +81,11 @@ router.get("/clients/:id/edit", function(req, res){
 //DELETE "/clients/:id" - delete client
 router.delete("/clients/:id", function(req, res){
     db.findByIdAndRemove(req.params.id, function(err){
-       if(err){
-           res.redirect("/clients");
-       } else {
-           res.redirect("/clients");
-       }
+      if(err){
+          res.redirect("/clients");
+      } else {
+            res.redirect("/clients");
+      }
     });
 });
 

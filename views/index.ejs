@@ -29,21 +29,21 @@
             <div class="col-sm-4 col-md-4 client-list">
                     <h1 class="text-center client-list-header">Client List</h1>
                     <hr class="list-break">
+
                     <div class="client-names">
                       <% clients.forEach(function(client) { %>
                           <div class="new-client">
                               <div class="name-container">
-                                  <span class="dislay-client"><h4 class="text-left"><%= client.lname %>, <%= client.fname %></h4></span>
+        
+                                  <span class="display-client"><h4 class="text-left"><%= client.lname %>, <%= client.fname %></h4></span>
                               </div>
                                <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
                                      <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
                                 </form>
                                <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
-                               
-                               
                           </div>
-                         
                           <br>
+    
                       <% }); %>
                 
                     </div>
