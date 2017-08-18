@@ -12,7 +12,9 @@
          </div>
          <br>
          <div class="amount-owed">
-              <p class="amount-title">Amount Owed<span class="amount-tracker">-72,995.15</span></p>
+              <p class="amount-title">Amount Owed<span class="amount-tracker"><%= total %>
+             
+              </span></p>
          </div>
      </div>
       
@@ -34,7 +36,7 @@
                       <% clients.forEach(function(client) { %>
                           <div class="new-client">
                               <div class="name-container">
-        
+    
                                   <span class="display-client"><h4 class="text-left"><%= client.lname %>, <%= client.fname %></h4></span>
                               </div>
                                <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">

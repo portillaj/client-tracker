@@ -1,7 +1,9 @@
+ /* global $ */
 var express = require("express");
 var router = express.Router();
 var db = require("../models/schema");
 var moment = require("moment");
+
 
 //GET "/" - landing page
 router.get("/", function(req, res) {
@@ -11,17 +13,23 @@ router.get("/", function(req, res) {
 //GET "/clients" - client list
 router.get("/clients", function(req, res){
     //get currentDate with moment js
-   
     
     db.find({}, function(err, clients){
+        var totalOwed = 0;
+        var getBalance;
+        clients.forEach(function(myClient){
+           totalOwed = totalOwed + (myClient.total_fee - myClient.down_payment);
+           getBalance = format1(totalOwed, "$");
+        });
+        
+        
          var currentDate = moment().format('MMMM Do YYYY');
-        console.log(clients);
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, currentDate: currentDate}); 
+            res.render("index", {clients: clients, total: getBalance, currentDate: currentDate}); 
        }
-    });
+    }).sort();
 
 });
 
@@ -88,6 +96,13 @@ router.delete("/clients/:id", function(req, res){
       }
     });
 });
+
+//function that converts number into currency format
+function format1(n, currency) {
+    return currency + "" + n.toFixed(2).replace(/./g, function(c, i, a) {
+        return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+    });
+}
 
 //exports all the routes to app.js
 module.exports = router;
