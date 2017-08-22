@@ -139,7 +139,6 @@ input[type=text] {
     margin-left: 20%;
     margin-top: 25px;
     border:0;
-    outline:none;
     border-radius:0;
     padding:10px 0;
     background-color: #1ab188;
@@ -156,7 +155,7 @@ input[type=text] {
 }
 
 /**********************************************
-MONEY SECTION
+NAV SECTION
 **********************************************/
 .app-links {
   background-color: rgba(0, 0, 0, 0.0);
@@ -223,6 +222,7 @@ MONEY SECTION
     background-color: #1E9D96;
     min-height: 40px;
     margin-top: 30px;
+    border-radius: 4px;
 }
 
 .amount-owed {
@@ -237,6 +237,7 @@ MONEY SECTION
 
 .amount-tracker, .income-tracker {
     margin-left: 25px;
+    margin-right: 10px;
     color: #fff;
     font-size: 18px;
 }

@@ -16,18 +16,21 @@ router.get("/clients", function(req, res){
     
     db.find({}, function(err, clients){
         var totalOwed = 0;
-        var getBalance;
+        var monthlyIncome = 0;
+        var getBalance, getMonthly;
+        
         clients.forEach(function(myClient){
            totalOwed = totalOwed + (myClient.total_fee - myClient.down_payment);
+           monthlyIncome = monthlyIncome + myClient.down_payment;
            getBalance = format1(totalOwed, "$");
+           getMonthly = format1(monthlyIncome, "$");
         });
-        
         
          var currentDate = moment().format('MMMM Do YYYY');
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, total: getBalance, currentDate: currentDate}); 
+            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, currentDate: currentDate}); 
        }
     }).sort();
 
@@ -103,6 +106,6 @@ function format1(n, currency) {
         return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
     });
 }
-
+ 
 //exports all the routes to app.js
 module.exports = router;

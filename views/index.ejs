@@ -8,6 +8,78 @@
      
      <div class="income-section">
          <div class="weekly-income">
+             <p class="income-title">Monthly Income<span class="income-tracker">+<%= monthTotal %></span></p>
+         </div>
+         <br>
+         <div class="amount-owed">
+              <p class="amount-title">Amount Owed<span class="amount-tracker">-<%= total %>
+             
+              </span></p>
+         </div>
+     </div>
+      
+  </div><!--END DATE AND INCOME SECTION -->
+    
+</div>
+
+    <div class="container-fluid add-client-section">
+        <a href="/add-client" class="btn btn-lg btn-warning client-add">Add New Client</a>
+    </div>
+    
+    <div class="container-fluid client-info-section">
+        <div class="row">
+            <div class="col-sm-4 col-md-4 client-list">
+                    <h1 class="text-center client-list-header">Client List</h1>
+                    <hr class="list-break">
+
+                    <div class="client-names">
+                      <% clients.forEach(function(client) { %>
+                          <div class="new-client">
+                              <div class="name-container">
+    
+                                  <span class="display-client"><h4 class="text-left"><%= client.lname %>, <%= client.fname %></h4></span>
+                              </div>
+                               <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
+                                     <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
+                                </form>
+                               <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
+                          </div>
+                          <br>
+    
+                      <% }); %>
+                
+                    </div>
+                </div>
+            
+            <div class="col-sm-8 col-md-8 client-details">
+                    <h1 class="text-center client-detail-header">Client Details</h1>
+                    <hr class="breakpoint">
+                  
+                    <div class="container" id="display-data">
+                         <h1 class="empty-client">Client data here</h1>
+                    </div>
+                    
+                    
+                     
+
+                    <hr class="breakpoint">
+                    <div class="edit-buttons">
+                        
+                    </div>
+            </div>
+        </div>
+</div>
+
+<% include partials/footer.ejs %><% include partials/header %>
+
+<div class="background-section">
+    
+     <div class="container date-money-section">
+        
+        <h3 id="date-display"><%= currentDate %></h3>
+     
+     <div class="income-section">
+         <div class="weekly-income">
              <p class="income-title">Weekly Income<span class="income-tracker">+2,532.45</span></p>
          </div>
          <br>

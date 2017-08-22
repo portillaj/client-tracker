@@ -1,9 +1,6 @@
  /* global $ */
   /* global moment */
     /* global location */
-    
-//total amount owed counter
-var totalAmountOwed = 0;
 
 //when the user clicks on the view button, the client information will show up on the section
 $(".view-client-button").on("click", function(event){
@@ -18,6 +15,7 @@ $(".view-client-button").on("click", function(event){
       url: "/clients/" + viewClient,
       method: "GET"
     }).done(function(response) {
+        
       //get the remaining balance from client
        response.balance = clientBalance(response.total_fee, response.down_payment);
       
@@ -72,23 +70,7 @@ $(".view-client-button").on("click", function(event){
     
 });//end view client click button
 
-var $people = $('display-client'),
-	$peopleli = $people.children('h4');
 
-$peopleli.sort(function(a,b){
-	var an = a.getAttribute('data-name'),
-		bn = b.getAttribute('data-name');
-
-	if(an > bn) {
-		return 1;
-	}
-	if(an < bn) {
-		return -1;
-	}
-	return 0;
-});
-
-$peopleli.detach().appendTo($people);
 //click event on signup form
 $('.option a').on('click', function (e) {
   
@@ -109,10 +91,6 @@ $('.option a').on('click', function (e) {
 //deleteClient function is run when the user clicks on delete button
 $("#delete-client").on("click", deleteClient);
 
-
-//displays clients in alphabetical order by last name to easily search client
-
-
 //function that converts number into currency format
 function format1(n, currency) {
     return currency + "" + n.toFixed(2).replace(/./g, function(c, i, a) {
@@ -123,12 +101,6 @@ function format1(n, currency) {
 //function that calculates the initial balance of client with down payment if there is one
 function clientBalance(totalFee, down) {
   return totalFee - down;
-}
-
-//function that calculates balance after a payment is made by client
-function payment(clientBalance, clientPayment){
-    totalAmountOwed = clientBalance;
-    return totalAmountOwed;
 }
 
 //function that deletes the client with confirmation 
