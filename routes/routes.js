@@ -12,13 +12,16 @@ router.get("/", function(req, res) {
 
 //GET "/clients" - client list
 router.get("/clients", function(req, res){
-    //get currentDate with moment js
     
+    //find all clients in the database
     db.find({}, function(err, clients){
+        //variables for total owed and monthly income section
         var totalOwed = 0;
         var monthlyIncome = 0;
         var getBalance, getMonthly;
         
+        //foreach loop that goes through the client list and calculates the total amount owed and monthly income
+        //return the balance for each section and stored into getBalance and getMonthly
         clients.forEach(function(myClient){
            totalOwed = totalOwed + (myClient.total_fee - myClient.down_payment);
            monthlyIncome = monthlyIncome + myClient.down_payment;
@@ -26,11 +29,13 @@ router.get("/clients", function(req, res){
            getMonthly = format1(monthlyIncome, "$");
         });
         
+         //get currentDate with moment js
          var currentDate = moment().format('MMMM Do YYYY');
+         
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, currentDate: currentDate}); 
+            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, currentDate: currentDate});  //render the index.ejs page with the passed in objects
        }
     }).sort();
 
@@ -85,6 +90,30 @@ router.get("/clients/:id/edit", function(req, res){
             res.redirect("/clients");
         } else {
             res.render("edit", {client: foundClient});
+        }
+    });
+});
+
+//payment update route
+router.put("/clients/payment/:id", function(req, res){
+    db.findByIdAndUpdate(req.params.id, req.body.client, function(err, clientPayment){
+        console.log(clientPayment);
+        if(err){
+            res.redirect("/clients/payment");
+        }else {
+            res.redirect("/clients/");
+        }
+    });
+});
+
+//GET "/clients/:id/payment" - make payment page for client
+router.get("/clients/:id/payment", function(req, res){
+    db.findById(req.params.id, function(err, foundClient){
+        console.log(foundClient);
+        if(err){
+            res.redirect("/clients");
+        } else {
+            res.render("payment", {client: foundClient});
         }
     });
 });

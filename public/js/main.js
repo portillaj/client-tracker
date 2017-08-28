@@ -59,11 +59,18 @@ $(".view-client-button").on("click", function(event){
         
         //adding edit button when the user clicks on view and they want to edit client information
         var editButton = $("<button>").addClass("btn btn-lg btn-warning edit-client-button").text("Edit Client");
+        var paymentButton = $("<button>").addClass("btn btn-lg btn-success payment-client-button").text("Make Payment");
         $(".edit-buttons").html(editButton);
+        $(".make-payment").html(paymentButton);
         
         //when edit button is clicked, the url will take them to the edit page to make changes
         $(".edit-client-button").on("click", function(){
            window.location.href='/clients/' + response._id + '/edit'; 
+        });//end edit click button function
+        
+        //when the make payment button is clicked, the page will go to the payment route to edit payment
+        $(".payment-client-button").on("click", function(){
+           window.location.href='/clients/' + response._id + '/payment'; 
         });//end edit click button function
 
     }); //end promise function
@@ -91,17 +98,21 @@ $('.option a').on('click', function (e) {
 //deleteClient function is run when the user clicks on delete button
 $("#delete-client").on("click", deleteClient);
 
+
+
+//************* FUNCTIONS SECTION *********************
+
 //function that converts number into currency format
 function format1(n, currency) {
     return currency + "" + n.toFixed(2).replace(/./g, function(c, i, a) {
         return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
     });
-}
+}//end format1 function
 
 //function that calculates the initial balance of client with down payment if there is one
 function clientBalance(totalFee, down) {
   return totalFee - down;
-}
+}//end clientBalance function
 
 //function that deletes the client with confirmation 
 function deleteClient() {
@@ -117,4 +128,4 @@ function deleteClient() {
     } else {
         return false;
     }
-}//end function
+}//end deleteClient function

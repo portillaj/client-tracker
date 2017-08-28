@@ -373,9 +373,14 @@ CLIENT DETAILS SECTION
 }
 
 .edit-buttons {
+    margin-left: 35%;
+    margin-right: 45px;
     margin-top: 35px;
-    text-align: center;
-    
+    float: left;
+}
+
+.make-payment {
+     margin-top: 55px;
 }
 
 .edit-buttons a {
