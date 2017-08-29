@@ -17,6 +17,10 @@ SIGN UP SECTION PAGE
     height: 100vh;
 }
 
+.login-sec {
+    margin-left: 170px;
+}
+
 .app-container {
     position: relative;
     width: 650px;
@@ -34,7 +38,6 @@ SIGN UP SECTION PAGE
 .app-title h1 {
      font-size: 55px;
      padding: 13px;
-     background: rgba(19,35,47, 0.9);
      border-radius: 5px;
 }
 
@@ -43,31 +46,15 @@ SIGN UP SECTION PAGE
     min-height: 400px;
     background: rgba(19,35,47, 0.9);
     margin: 0 auto;
-     position:absolute;
+    position:absolute;
     top:30%;
     right:0;
     left:0;
 }
 
 .option-group a {
-    text-decoration:none;
-    color: #1ab188;
-    transition:.5s ease;
     margin-top: 25px;
  }
- 
- .option-content > div:last-child {
-     display: none;
- }
- 
- .option a {
-      background-color: rgba(160,179,176,.25);
-     
- }
-  
-.option-group a:hover {
-    background-color: #1ab188;
-}
 
 .option-group {
  list-style:none;
@@ -95,11 +82,6 @@ SIGN UP SECTION PAGE
     transition:.5s ease;
 }
 
-li a:hover {
-      background: #a0b3b0;
-      color: #fff;
-}
-
 .active a {
     background: #1ab188;
     color: #fff;
@@ -108,14 +90,6 @@ li a:hover {
 .signup-header {
     color: #fff;
     margin-top: 35px;
-}
-
-.signup-form {
-    background: none;
-    border-radius: 0;
-    margin-left: 65%;
-    margin-top: 25px;
-    width: 80%;
 }
 
 .login-form input[type=text] {
@@ -135,7 +109,7 @@ input[type=text] {
     margin-right: 10px;
 }
 
-.signUp-btn {
+.signUp-btn, .login-btn {
     margin-left: 20%;
     margin-top: 25px;
     border:0;

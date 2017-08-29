@@ -3,12 +3,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models/schema");
 var moment = require("moment");
-
-
-//GET "/" - landing page
-router.get("/", function(req, res) {
-   res.render("landing"); 
-});
+var User = require("../models/user");
 
 //GET "/clients" - client list
 router.get("/clients", function(req, res){
@@ -128,6 +123,21 @@ router.delete("/clients/:id", function(req, res){
       }
     });
 });
+
+
+//====================== LOGIN/SIGN IN ROUTES =========================
+//GET "/" - landing page/LOGIN
+router.get("/", function(req, res) {
+   res.render("login"); 
+});
+
+
+
+
+
+
+
+
 
 //function that converts number into currency format
 function format1(n, currency) {
