@@ -4,6 +4,7 @@ var router = express.Router();
 var db = require("../models/schema");
 var moment = require("moment");
 var User = require("../models/user");
+var passport = require("passport");
 
 //GET "/clients" - client list
 router.get("/clients", function(req, res){
@@ -26,13 +27,14 @@ router.get("/clients", function(req, res){
         
          //get currentDate with moment js
          var currentDate = moment().format('MMMM Do YYYY');
-         
+        
+        //if error occurs, redirect to the same page
        if(err){
            res.redirect("/clients");
        } else {
             res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, currentDate: currentDate});  //render the index.ejs page with the passed in objects
        }
-    }).sort();
+    });
 
 });
 
@@ -127,17 +129,43 @@ router.delete("/clients/:id", function(req, res){
 
 //====================== LOGIN/SIGN IN ROUTES =========================
 //GET "/" - landing page/LOGIN
-router.get("/", function(req, res) {
+router.get("/login", function(req, res) {
    res.render("login"); 
+});
+
+//route where the login credentials is handled
+router.post("/login", passport.authenticate('local', {
+    successRedirect: '/clients',
+    failureRedirect: '/login',
+    failureFlash: 'Invalid Username or password.',
+    successFlash: 'Welcome'
+}));
+         
+//route where the user can register their profile
+router.get("/register", function(req, res){
+    
+});
+
+//route where the register process is handled
+router.post("/register", function(req, res){
+    
+});
+
+//route where the user will log out when link is clicked
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/login');
 });
 
 
 
-
-
-
-
-
+//function to check if user is logged in (middleware)
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/login');
+}//end function
 
 //function that converts number into currency format
 function format1(n, currency) {

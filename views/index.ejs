@@ -29,25 +29,37 @@
     <div class="container-fluid client-info-section">
         <div class="row">
             <div class="col-sm-4 col-md-4 client-list">
-                    <h1 class="text-center client-list-header">Client List</h1>
-                    <hr class="list-break">
+                <h1 class="text-center client-list-header">Client List</h1>
+                <hr class="list-break">
 
-                    <div class="client-names">
-                      <% clients.forEach(function(client) { %>
-                          <div class="new-client">
-                              <div class="name-container">
-    
-                                  <span class="display-client"><h4 class="text-left"><%= client.lname %>, <%= client.fname %></h4></span>
-                              </div>
-                               <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
-                                     <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
+                <div id="client-names">
+                    <!-- class="search" automagically makes an input a search field. -->
+                  <input class="search" placeholder="Search" />
+                    <!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
+                  <button class="sort" data-sort="fname">
+                    Sort By First Name
+                  </button>
+                  <button class="sort" data-sort="lname">
+                  Sort by Last Name
+                    </button>
+                      
+                    <ul class="list">  
+                        <% clients.forEach(function(client) { %>
+                            
+                            <li>
+                                <span class="lname"><%= client.lname %></span>
+                                <span class="fname"><%= client.fname %></span>
+                                <br>
+                                 <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
+                                 <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
                                 </form>
                                <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
-                          </div>
-                          <br>
-    
-                      <% }); %>
-                
+                            </li>
+
+                          
+                           
+                          <% }); %>
+                       </ul>
                     </div>
                 </div>
             
@@ -75,5 +87,6 @@
             </div>
         </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
 <% include partials/footer.ejs %>

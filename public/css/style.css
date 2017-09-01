@@ -253,7 +253,6 @@ CLIENT LIST SECTION
 
 .list-break {
     width: 50%;
-
     margin-top: 10px;
 }
 
@@ -268,20 +267,32 @@ CLIENT LIST SECTION
     color: white;
 }
 
-.name-container {
+.list {
     display: inline-block;
     color: white;
+    list-style-type: none;
+}
+
+.list li {
+    margin-bottom: 10px;
+}
+
+
+.list, #delete-client, .view-client-button {
+    margin-top: 40px;
 }
 
 .view-client-button {
     background-color: #444444;
-       float: right;
-       margin-right: 15px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .delete-form {
     display: inline-block;
-    float: right;
+    margin-top: -20px;
 }
 
 .first-break {

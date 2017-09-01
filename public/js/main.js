@@ -81,7 +81,7 @@ $(".view-client-button").on("click", function(event){
 //deleteClient function is run when the user clicks on delete button
 $("#delete-client").on("click", deleteClient);
 
-
+  
 
 //************* FUNCTIONS SECTION *********************
 
