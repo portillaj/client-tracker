@@ -16,7 +16,7 @@ $(".view-client-button").on("click", function(event){
       method: "GET"
     }).done(function(response) {
         
-      //get the remaining balance from client
+      //get the remaining balance from client using clientBalance function
        response.balance = clientBalance(response.total_fee, response.down_payment);
       
        //when user clicks on view client button, HTML is displayed
@@ -81,7 +81,23 @@ $(".view-client-button").on("click", function(event){
 //deleteClient function is run when the user clicks on delete button
 $("#delete-client").on("click", deleteClient);
 
-  
+
+//using moment js to get current date and display it on screen
+var now = moment();
+var currentDate = now.format('MMMM Do YYYY');
+
+//display date on screen :)
+$('#date-display').html(currentDate);
+
+
+//list js library - sort clients by first or last name
+//also search bar is used to find clients easily
+var options = {
+    valueNames: [ 'lname', 'fname']
+};
+
+//list js library - using ID client-names to sort
+var clientList = new List('client-names', options);
 
 //************* FUNCTIONS SECTION *********************
 

@@ -4,7 +4,9 @@
     
      <div class="container date-money-section">
         
-        <h3 id="date-display"><%= currentDate %></h3>
+        <h3 id="date-display">
+            
+        </h3>
      
      <div class="income-section">
          <div class="weekly-income">
@@ -26,7 +28,7 @@
         <a href="/add-client" class="btn btn-lg btn-warning client-add">Add New Client</a>
     </div>
     
-    <div class="container-fluid client-info-section">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4 col-md-4 client-list">
                 <h1 class="text-center client-list-header">Client List</h1>
@@ -54,14 +56,15 @@
                                  <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
                                 </form>
                                <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
-                            </li>
-
-                          
-                           
+                            </li>         
                           <% }); %>
                        </ul>
                     </div>
                 </div>
+                
+                <!--END CLIENT LIST SECTION -->
+                
+                <!--START CLIENT DETAILS SECTION -->
             
             <div class="col-sm-8 col-md-8 client-details">
                     <h1 class="text-center client-detail-header">Client Details</h1>
@@ -70,9 +73,6 @@
                     <div class="container" id="display-data">
                          <h1 class="empty-client">Client data here</h1>
                     </div>
-                    
-                    
-                     
 
                     <hr class="breakpoint">
                     <span class="button-section">
@@ -85,7 +85,7 @@
                         </div>
                     </span>
             </div>
-        </div>
+        </div> <!-- END ROW -->
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
