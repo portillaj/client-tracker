@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 //APP CONFIG
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/client_tracker", {
   useMongoClient: true});
   

@@ -1,13 +1,36 @@
- /* global $ */
 var express = require("express");
 var router = express.Router();
 var db = require("../models/schema");
 var moment = require("moment");
 var User = require("../models/user");
-var passport = require("passport");
+var passport = require("passport"),
+    LocalStrategy   = require("passport-local"),
+    expressSession  = require("express-session"),
+    cookieParser    = require("cookie-parser");
+
+//PASSPORT CONFIGURATION
+router.use(expressSession({
+    secret: process.env.SESSION_SECRET || 'secret',
+    saveUninitialized: false,
+    resave: false
+}));
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//END PASSPORT CONFIGURATION
+
+//middleware to all routes so the nav bar can hide or show login logout and signup links
+router.use(function(req, res, next){
+    console.log(req.user);
+    res.locals.currentUser = req.user;
+    next();
+});
+
 
 //GET "/clients" - client list
-router.get("/clients", function(req, res){
+router.get("/clients", isLoggedIn, function(req, res){
     
     //find all clients in the database
     db.find({}, function(err, clients){
@@ -15,6 +38,7 @@ router.get("/clients", function(req, res){
         var totalOwed = 0;
         var monthlyIncome = 0;
         var getBalance, getMonthly;
+        var totalClients = 0;
         
         //foreach loop that goes through the client list and calculates the total amount owed and monthly income
         //return the balance for each section and stored into getBalance and getMonthly
@@ -24,14 +48,12 @@ router.get("/clients", function(req, res){
            getBalance = format1(totalOwed, "$");
            getMonthly = format1(monthlyIncome, "$");
         });
-        
        
-        
         //if error occurs, redirect to the same page
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly});  //render the index.ejs page with the passed in objects
+            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, totalClients: totalClients});  //render the index.ejs page with the passed in objects
        }
     });
 
@@ -143,21 +165,33 @@ router.get("/login", function(req, res) {
 //route where the login credentials is handled
 router.post("/login", passport.authenticate('local', {
     successRedirect: '/clients',
-    failureRedirect: '/login',
-    failureFlash: 'Invalid Username or password.',
-    successFlash: 'Welcome'
+    failureRedirect: '/login'
 })); //end route
 
          
 //route where the user can register their profile
 router.get("/register", function(req, res){
-    
+    res.render('register');
 }); //end route
 
 
 //route where the register process is handled
 router.post("/register", function(req, res){
-    
+    var newUser = new User({
+        username: req.body.username,
+        firstname: req.body.firstName,
+        lastname: req.body.lastName,
+        email: req.body.email
+    });
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/login");
+        });
+    });
 }); //end route
 
 
