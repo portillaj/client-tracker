@@ -99,7 +99,8 @@ var options = {
 //list js library - using ID client-names to sort
 var clientList = new List('client-names', options);
 
-//************* FUNCTIONS SECTION *********************
+
+//========================== FUNCTIONS SECTION =============================
 
 //function that converts number into currency format
 function format1(n, currency) {

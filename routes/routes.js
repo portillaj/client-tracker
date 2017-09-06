@@ -34,11 +34,11 @@ router.get("/clients", isLoggedIn, function(req, res){
     
     //find all clients in the database
     db.find({}, function(err, clients){
+        
         //variables for total owed and monthly income section
         var totalOwed = 0;
         var monthlyIncome = 0;
         var getBalance, getMonthly;
-        var totalClients = 0;
         
         //foreach loop that goes through the client list and calculates the total amount owed and monthly income
         //return the balance for each section and stored into getBalance and getMonthly
@@ -53,7 +53,7 @@ router.get("/clients", isLoggedIn, function(req, res){
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly, totalClients: totalClients});  //render the index.ejs page with the passed in objects
+            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly });  //render the index.ejs page with the passed in objects
        }
     });
 

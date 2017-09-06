@@ -95,6 +95,7 @@ input[type=text] {
     margin-right: 10px;
 }
 
+
 .signUp-btn, .login-btn {
     margin-left: 20%;
     margin-top: 25px;
@@ -245,7 +246,7 @@ CLIENT LIST SECTION
     background: white;
     border: 2px solid black;
     font-size: 10pt;
-    color: white;
+    color: black;
     padding-left: 45px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
