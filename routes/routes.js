@@ -10,9 +10,9 @@ var passport = require("passport"),
 
 //PASSPORT CONFIGURATION
 router.use(expressSession({
-    secret: process.env.SESSION_SECRET || 'secret',
-    saveUninitialized: false,
-    resave: false
+    secret: 'Client tracker',
+    resave: false,
+    saveUninitialized: false
 }));
 router.use(passport.initialize());
 router.use(passport.session());
@@ -23,7 +23,6 @@ passport.deserializeUser(User.deserializeUser());
 
 //middleware to all routes so the nav bar can hide or show login logout and signup links
 router.use(function(req, res, next){
-    console.log(req.user);
     res.locals.currentUser = req.user;
     next();
 });
@@ -34,26 +33,12 @@ router.get("/clients", isLoggedIn, function(req, res){
     
     //find all clients in the database
     db.find({}, function(err, clients){
-        
-        //variables for total owed and monthly income section
-        var totalOwed = 0;
-        var monthlyIncome = 0;
-        var getBalance, getMonthly;
-        
-        //foreach loop that goes through the client list and calculates the total amount owed and monthly income
-        //return the balance for each section and stored into getBalance and getMonthly
-        clients.forEach(function(myClient){
-           totalOwed = totalOwed + (myClient.total_fee - myClient.down_payment);
-           monthlyIncome = monthlyIncome + myClient.down_payment;
-           getBalance = format1(totalOwed, "$");
-           getMonthly = format1(monthlyIncome, "$");
-        });
-       
+        console.log(clients);
         //if error occurs, redirect to the same page
        if(err){
            res.redirect("/clients");
        } else {
-            res.render("index", {clients: clients, total: getBalance, monthTotal: getMonthly });  //render the index.ejs page with the passed in objects
+            res.render("index", {clients: clients});  //render the index.ejs page with the passed in objects
        }
     });
 
@@ -84,8 +69,9 @@ router.get("/clients/:id", function(req, res) {
        if(err){
            res.redirect("/clients");
        } else {
-           res.render("index", {clients: foundClient});
            res.json(foundClient);
+           res.render("index", {clients: foundClient});
+           
        }
    });
 }); //end route

@@ -8,11 +8,11 @@
      
      <div class="income-section">
          <div class="weekly-income">
-             <p class="income-title">Monthly Income<span class="income-tracker">+<%= monthTotal %></span></p>
+             <p class="income-title">Monthly Income<span class="income-tracker">+</span></p>
          </div>
          <br>
          <div class="amount-owed">
-              <p class="amount-title">Amount Owed<span class="amount-tracker">-<%= total %>
+              <p class="amount-title">Amount Owed<span class="amount-tracker">-
              
               </span></p>
          </div>
@@ -47,16 +47,16 @@
                       <hr class="list-break first-break">
                     <ul class="list">  
                         <% clients.forEach(function(client) { %>
-                          
                             <li>
-                              
                                 <span class="lname"><%= client.lname %></span>
                                 <span class="fname"><%= client.fname %></span>
                                 <br>
-                                 <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
+                                
+                               <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
+                               
+                                <form class="delete-form" action="/clients/<%= client._id %>?_method=DELETE" method="POST">
                                  <button class="btn btn-danger btn-md"  data-id="<%= client._id %>" id="delete-client">Delete Client</button>
                                 </form>
-                               <a href="/clients/<%= client._id %>" data-id="<%= client._id %>" class="btn btn-primary btn-md view-client-button">View Client</a>
                             </li>
                        
                           <% }); %>

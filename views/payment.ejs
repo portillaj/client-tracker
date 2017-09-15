@@ -1,5 +1,25 @@
 <% include partials/header.ejs %>
+<div class="payment-back">
+ 
+ <div class="frame">  
+  <form action="/" method="post" id="cardForm" >
+    <label class="hosted-fields--label" for="card-number">Card Number</label>
+    <div id="card-number" class="hosted-field"></div>
+    
+    <label class="hosted-fields--label" for="expiration-date">Expiration Date</label>
+    <div id="expiration-date" class="hosted-field"></div>
 
-<h1>Make Payment Section</h1>
+    <label class="hosted-fields--label" for="cvv">CVV</label>
+    <div id="cvv" class="hosted-field"></div>
+
+    <label class="hosted-fields--label" for="postal-code">Postal Code</label>
+    <div id="postal-code" class="hosted-field"></div>
+
+    <div class="button-container">
+    <input type="submit" class="button button--small button--green" value="purchase" id="submit"/>
+    </div>
+  </form>
+</div>
+</div>
 
 <% include partials/footer.ejs %>
