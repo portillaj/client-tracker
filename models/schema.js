@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 //APP CONFIG
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://portillaj:port6911@ds115045.mlab.com:15045/clients');
+mongoose.connect('mongodb://portillaj:port6911@ds115045.mlab.com:15045/clients' || "mongodb://localhost/client_tracker");
 
   //MONGOOSE/MODEL CONFIG
 var clientSchema = new mongoose.Schema({
