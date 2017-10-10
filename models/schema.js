@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 //APP CONFIG
 mongoose.Promise = global.Promise;
-var db = process.env.MONGODB_URI || "mongodb://localhost/client_tracker";
+var db = 'mongodb://portillaj:port6911@ds115045.mlab.com:15045/clients' || "mongodb://localhost/client_tracker";
 mongoose.connect(db, {useMongoClient: true}, function(error) {
   if(error) {
     console.log(error);

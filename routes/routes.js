@@ -7,7 +7,7 @@ var passport = require("passport"),
     LocalStrategy   = require("passport-local"),
     expressSession  = require("express-session"),
     cookieParser    = require("cookie-parser"),
-   flash = require('connect-flash');
+    flash = require('connect-flash');
 
 
 
