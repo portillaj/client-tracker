@@ -157,13 +157,13 @@ router.post("/login", passport.authenticate('local', {
 
 
 //route where the user can register their profile
-router.get("/", function(req, res){
+router.get("/register", function(req, res){
     res.render('register');
 }); //end route
 
 
 //route where the register process is handled
-router.post("/", function(req, res){
+router.post("/register", function(req, res){
     var newUser = new User({
         username: req.body.username,
         firstname: req.body.firstName,
