@@ -143,13 +143,13 @@ router.delete("/clients/:id", function(req, res){
 //====================== LOGIN/SIGN IN ROUTES =========================
 
 //GET "/" - landing page/LOGIN
-router.get("/", function(req, res) {
+router.get("/login", function(req, res) {
    res.render("login");
 }); //end route
 
 
 //route where the login credentials is handled
-router.post("/", passport.authenticate('local', {
+router.post("/login", passport.authenticate('local', {
     successRedirect: '/clients',
     failureRedirect: '/login',
     failureFlash: true
@@ -157,13 +157,13 @@ router.post("/", passport.authenticate('local', {
 
 
 //route where the user can register their profile
-router.get("/register", function(req, res){
+router.get("/", function(req, res){
     res.render('register');
 }); //end route
 
 
 //route where the register process is handled
-router.post("/register", function(req, res){
+router.post("/", function(req, res){
     var newUser = new User({
         username: req.body.username,
         firstname: req.body.firstName,
