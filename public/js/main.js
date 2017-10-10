@@ -105,7 +105,7 @@ var clientList = new List('client-names', options);
 
 
 var form = document.querySelector('#cardForm');
-var authorization = 'sandbox_g42y39zw_348pk9cgf3bgyw2b';
+var authorization = 'sandbox_fvkg8dsh_f2wz6j8grwtmwwpj';
 
 braintree.client.create({
   authorization: authorization

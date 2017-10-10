@@ -6,7 +6,10 @@ var User = require("../models/user");
 var passport = require("passport"),
     LocalStrategy   = require("passport-local"),
     expressSession  = require("express-session"),
-    cookieParser    = require("cookie-parser");
+    cookieParser    = require("cookie-parser"),
+   flash = require('connect-flash');
+
+
 
 //PASSPORT CONFIGURATION
 router.use(expressSession({
@@ -16,6 +19,7 @@ router.use(expressSession({
 }));
 router.use(passport.initialize());
 router.use(passport.session());
+router.use(flash());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -30,7 +34,7 @@ router.use(function(req, res, next){
 
 //GET "/clients" - client list
 router.get("/clients", isLoggedIn, function(req, res){
-    
+
     //find all clients in the database
     db.find({}, function(err, clients){
         console.log(clients);
@@ -71,7 +75,7 @@ router.get("/clients/:id", function(req, res) {
        } else {
            res.json(foundClient);
            res.render("index", {clients: foundClient});
-           
+
        }
    });
 }); //end route
@@ -144,17 +148,18 @@ router.delete("/clients/:id", function(req, res){
 
 //GET "/" - landing page/LOGIN
 router.get("/login", function(req, res) {
-   res.render("login"); 
+   res.render("login");
 }); //end route
 
 
 //route where the login credentials is handled
 router.post("/login", passport.authenticate('local', {
     successRedirect: '/clients',
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: true
 })); //end route
 
-         
+
 //route where the user can register their profile
 router.get("/register", function(req, res){
     res.render('register');
@@ -180,16 +185,13 @@ router.post("/register", function(req, res){
     });
 }); //end route
 
-
 //route where the user will log out when link is clicked
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/login');
 }); //end route
 
-
 //=============================FUNCTIONS SECTION ==============================
-
 
 //function to check if user is logged in (middleware)
 function isLoggedIn(req, res, next){
@@ -206,6 +208,5 @@ function format1(n, currency) {
     });
 } //end function
 
- 
 //exports all the routes to app.js
 module.exports = router;
