@@ -2,12 +2,12 @@ var mongoose = require("mongoose");
 
 //APP CONFIG
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/client_tracker", {
+mongoose.connect("mongodb://portillaj:port6911@ds143241.mlab.com:43241/client_tracker", {
   useMongoClient: true});
-  
+
   //MONGOOSE/MODEL CONFIG
 var clientSchema = new mongoose.Schema({
-   fname: { 
+   fname: {
         type: String,
         required: true
    },
@@ -54,8 +54,8 @@ var clientSchema = new mongoose.Schema({
         type: Number,
         trim: true
     },
-    created: { 
-        type: Date, default: Date.now 
+    created: {
+        type: Date, default: Date.now
     }
 });
 
