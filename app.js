@@ -22,7 +22,7 @@ app.use(methodOverride("_method"));
 var routes = require("./routes/routes.js");
 
 //setting up all routes here
-app.use("/register", routes);
+app.use("/", routes);
 
 //server listening
 app.listen(port, function(){
