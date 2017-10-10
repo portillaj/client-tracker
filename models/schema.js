@@ -2,8 +2,14 @@ var mongoose = require("mongoose");
 
 //APP CONFIG
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://portillaj:port6911@ds143241.mlab.com:43241/client_tracker", {
-  useMongoClient: true});
+var db = process.env.MONGODB_URI || "mongodb://localhost/client_tracker";
+mongoose.connect(db, {useMongoClient: true}, function(error) {
+  if(error) {
+    console.log(error);
+  }else {
+    console.log("Mongoose connection is successful");
+  }
+});
 
   //MONGOOSE/MODEL CONFIG
 var clientSchema = new mongoose.Schema({
