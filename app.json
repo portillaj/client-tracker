@@ -1,0 +1,6 @@
+{
+  "name": "Client Tracker",
+  "description": "A app tracking clients and their info",
+  "repository": "https://github.com/portillaj/client-tracker",
+  "keywords": ["node", "express", "static"]
+}
