@@ -10,19 +10,19 @@
 $(".view-client-button").on("click", function(event){
     //prevent default behavior of button
     event.preventDefault();
-    
+
     //get the right client information when button clicked
     var viewClient = $(this).data("id");
-    
+
     //ajax call to route to get information from the server and display content on screen
       $.ajax({
       url: "/clients/" + viewClient,
       method: "GET"
     }).done(function(response) {
-        
+
       //get the remaining balance from client using clientBalance function
        response.balance = clientBalance(response.total_fee, response.down_payment);
-      
+
        //when user clicks on view client button, HTML is displayed
        var details = '<div class="left-details">\
                         <h3>' + response.fname + '</h3><input class="view-data" type="text"/>\
@@ -57,28 +57,28 @@ $(".view-client-button").on("click", function(event){
                          <input class="view-data" type="text"/>\
                       <h5>Court Case Number</h5>\
                     </div>';
-                    
-        //display the content on screen           
+
+        //display the content on screen
         $("#display-data").html(details);
-        
+
         //adding edit button when the user clicks on view and they want to edit client information
         var editButton = $("<button>").addClass("btn btn-lg btn-warning edit-client-button").text("Edit Client");
         var paymentButton = $("<button>").addClass("btn btn-lg btn-success payment-client-button").text("Make Payment");
         $(".edit-buttons").html(editButton);
         $(".make-payment").html(paymentButton);
-        
+
         //when edit button is clicked, the url will take them to the edit page to make changes
         $(".edit-client-button").on("click", function(){
-           window.location.href='/clients/' + response._id + '/edit'; 
+           window.location.href='/clients/' + response._id + '/edit';
         });//end edit click button function
-        
+
         //when the make payment button is clicked, the page will go to the payment route to edit payment
         $(".payment-client-button").on("click", function(){
-           window.location.href='/clients/' + response._id + '/payment'; 
+           window.location.href='/clients/' + response._id + '/payment';
         });//end edit click button function
 
     }); //end promise function
-    
+
 });//end view client click button
 
 
@@ -161,7 +161,7 @@ function createHostedFields(clientInstance) {
         form.removeEventListener('submit', teardown, false);
       });
     };
-    
+
     form.addEventListener('submit', teardown, false);
   });
 }
@@ -180,7 +180,7 @@ function clientBalance(totalFee, down) {
   return totalFee - down;
 }//end clientBalance function
 
-//function that deletes the client with confirmation 
+//function that deletes the client with confirmation
 function deleteClient() {
     var confirmation = confirm('Are you sure you want to delete client'); //confirmation prompt
      var deleteClient = $(this).data("id"); //delete client variable that selects that client only
@@ -195,13 +195,3 @@ function deleteClient() {
         return false;
     }
 }//end deleteClient function
-
-
-// //foreach loop that goes through the client list and calculates the total amount owed and monthly income
-//        //return the balance for each section and stored into getBalance and getMonthly
-//        clients.forEach(function(myClient){
-//           totalOwed = totalOwed + (myClient.total_fee - myClient.down_payment);
-//           monthlyIncome = monthlyIncome + myClient.down_payment;
-//           getBalance = format1(totalOwed, "$");
-//           monthTotal = format1(monthlyIncome, "$");
-//       });

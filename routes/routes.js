@@ -37,7 +37,6 @@ router.get("/clients", isLoggedIn, function(req, res){
 
     //find all clients in the database
     db.find({}, function(err, clients){
-        console.log(clients);
         //if error occurs, redirect to the same page
        if(err){
            res.redirect("/clients");
@@ -96,7 +95,6 @@ router.put("/clients/:id", function(req, res){
 //GET "/clients/:id/edit" - edit client information in form
 router.get("/clients/:id/edit", function(req, res){
     db.findById(req.params.id, function(err, foundClient){
-        console.log(foundClient);
         if(err){
             res.redirect("/clients");
         } else {
@@ -109,7 +107,6 @@ router.get("/clients/:id/edit", function(req, res){
 //payment update route
 router.put("/clients/payment/:id", function(req, res){
     db.findByIdAndUpdate(req.params.id, req.body.client, function(err, clientPayment){
-        console.log(clientPayment);
         if(err){
             res.redirect("/clients/payment");
         }else {
@@ -122,7 +119,6 @@ router.put("/clients/payment/:id", function(req, res){
 //GET "/clients/:id/payment" - make payment page for client
 router.get("/clients/:id/payment", function(req, res){
     db.findById(req.params.id, function(err, foundClient){
-        console.log(foundClient);
         if(err){
             res.redirect("/clients");
         } else {
