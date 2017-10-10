@@ -143,13 +143,13 @@ router.delete("/clients/:id", function(req, res){
 //====================== LOGIN/SIGN IN ROUTES =========================
 
 //GET "/" - landing page/LOGIN
-router.get("/login", function(req, res) {
+router.get("/", function(req, res) {
    res.render("login");
 }); //end route
 
 
 //route where the login credentials is handled
-router.post("/login", passport.authenticate('local', {
+router.post("/", passport.authenticate('local', {
     successRedirect: '/clients',
     failureRedirect: '/login',
     failureFlash: true
